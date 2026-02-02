@@ -2,15 +2,22 @@
 authors = ["JoelStansbury <stansbury.joel@gmail.com>"]
 channels = ["conda-forge"]
 name = "json-pouch"
-platforms = ["win-64"]
+platforms = ["win-64", "linux-64"]
 version = "0.1.0"
 
 [tasks]
 setup = "npm install"
-code = "code ."
-tsc = "npx tsc"
-main = "node src/javascript/index.js"
-test = "npx jest"
+# tsc = "npx tsc"
+# main = "node src/javascript/index.js"
+
+[tasks.test]
+cmd = "npx jest"
+depends-on = ["setup"]
+
+[tasks.code]
+cmd = "code ."
+depends-on = ["setup"]
+
 [dependencies]
 nodejs = "*"
 

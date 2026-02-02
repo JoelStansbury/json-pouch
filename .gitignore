@@ -4,3 +4,4 @@
 .yarn
 src/javascript
 node_modules
+dbname
