@@ -5,13 +5,17 @@ name = "json-pouch"
 platforms = ["win-64", "linux-64"]
 version = "0.1.0"
 
-[tasks]
-setup = "npm install"
-# tsc = "npx tsc"
-# main = "node src/javascript/index.js"
+[tasks.setup]
+cmd = "npm install"
+inputs = ['package.json']
+outputs = ['package-lock.json']
 
 [tasks.test]
 cmd = "npx jest"
+depends-on = ["setup"]
+
+[tasks.fix]
+cmd = "npx eslint --fix src"
 depends-on = ["setup"]
 
 [tasks.code]
